@@ -1,0 +1,9 @@
+.userReview {
+  width: 50px;
+}
+
+.review {
+  background-color: white;
+  padding: 15px 20px;
+  border-radius: 10px;
+}

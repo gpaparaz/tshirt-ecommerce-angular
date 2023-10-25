@@ -1,0 +1,17 @@
+.productImage {
+  width: 30rem;
+  height: 30rem;
+}
+
+.table {
+  width: 500px;
+}
+
+.quantityInput {
+ width: 50px;
+}
+
+.brandLogo {
+  height: 80px;
+  width: fit-content;
+}

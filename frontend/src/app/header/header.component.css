@@ -1,0 +1,32 @@
+.navbar {
+  background-color: rgb(33, 50, 102) !important;
+}
+
+.navbar a {
+  color: azure;;
+}
+
+span {
+  color: azure;;
+}
+
+.logo {
+  width: 80px;
+}
+
+.userHeaderButton {
+  background-color: transparent;
+  border: none;
+}
+.dropdown-toggle::after {
+  display: none;
+}
+
+.userTooltip {
+  padding: 30px;
+  width: fit-content;
+  color: azure;;
+  background-color: rgb(21, 33, 67);
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}

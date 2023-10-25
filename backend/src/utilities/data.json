@@ -1,0 +1,243 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "T-shirt estiva",
+      "articleNumber": 1234456,
+      "price": 129.99,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+      "brand": "LiuJo",
+      "imgUrl": "https://images.unsplash.com/photo-1527719327859-c6ce80353573?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80",
+      "colorName": "red",
+      "colorId": 2001,
+      "quantity": 1
+    },
+    {
+      "id": 2,
+      "name": "T-shirt estiva",
+      "articleNumber": 1234456,
+      "price": 129.99,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+      "brand": "LiuJo",
+      "imgUrl": "https://images.unsplash.com/photo-1527719327859-c6ce80353573?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80",
+      "colorName": "green",
+      "colorId": 2002,
+      "quantity": 3
+    },
+    {
+      "id": 3,
+      "name": "T-shirt estiva",
+      "articleNumber": 1234456,
+      "price": 129.99,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+      "brand": "LiuJo",
+      "imgUrl": "https://images.unsplash.com/photo-1527719327859-c6ce80353573?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80",
+      "colorName": "blue",
+      "colorId": 2003,
+      "quantity": 2
+    },
+
+    {
+      "id": 4,
+      "name": "T-shirt semi estiva",
+      "articleNumber": 1234458,
+      "price": 87.99,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+      "brand": "LiuJo",
+      "imgUrl": "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1972&q=80",
+      "colorName": "red",
+      "colorId": 2001,
+      "quantity": 4
+    },
+    {
+      "id": 5,
+      "name": "T-shirt semi estiva",
+      "articleNumber": 1234458,
+      "price": 87.99,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+      "brand": "LiuJo",
+      "imgUrl": "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1972&q=80",
+      "colorName": "green",
+      "colorId": 2002,
+      "quantity": 2
+    },
+    {
+      "id": 6,
+      "name": "T-shirt semi estiva",
+      "articleNumber": 1234458,
+      "price": 87.99,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+      "brand": "LiuJo",
+      "imgUrl": "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1972&q=80",
+      "colorName": "blue",
+      "colorId": 2003,
+      "quantity": 1
+    },
+    {
+      "id": 7,
+      "name": "T-shirt autunnale",
+      "articleNumber": 1234459,
+      "price": 150.99,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+      "brand": "Armani",
+      "imgUrl": "https://images.unsplash.com/photo-1633966887768-64f9a867bdba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2003&q=80",
+      "colorName": "red",
+      "colorId": 2001,
+      "quantity": 5
+    },
+    {
+      "id": 8,
+      "name": "T-shirt primaverile",
+      "articleNumber": 1234461,
+      "price": 70.99,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+      "brand": "Armani",
+      "imgUrl": "https://images.unsplash.com/photo-1627910087352-f4e3e28d9f5f?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "colorName": "green",
+      "colorId": 2002,
+      "quantity": 2
+    },
+    {
+      "id": 9,
+      "name": "T-shirt primaverile",
+      "articleNumber": 1234461,
+      "price": 70.99,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+      "brand": "Armani",
+      "imgUrl": "https://images.unsplash.com/photo-1627910087352-f4e3e28d9f5f?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "colorName": "red",
+      "colorId": 2001,
+      "quantity": 1
+    },
+    {
+      "id": 10,
+      "name": "T-shirt primaverile",
+      "articleNumber": 1234461,
+      "price": 70.99,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+      "brand": "Armani",
+      "imgUrl": "https://images.unsplash.com/photo-1627910087352-f4e3e28d9f5f?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "colorName": "blue",
+      "colorId": 2003,
+      "quantity": 0
+    },
+    {
+      "id": 11,
+      "name": "T-shirt comfort",
+      "articleNumber": 134458,
+      "price": 65.99,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+      "brand": "Armani",
+      "imgUrl": "https://images.unsplash.com/photo-1622445270936-5dcb604970e7?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "colorName": "blue",
+      "colorId": 2003,
+      "quantity": 3
+    },
+    {
+      "id": 12,
+      "name": "T-shirt comfort",
+      "articleNumber": 134458,
+      "price": 65.99,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+      "brand": "Armani",
+      "imgUrl": "https://images.unsplash.com/photo-1622445270936-5dcb604970e7?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "colorName": "green",
+      "colorId": 2002,
+      "quantity": 3
+    },
+
+    {
+      "id": 13,
+      "name": "T-shirt regular",
+      "articleNumber": 134558,
+      "price": 67.99,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+      "brand": "Dolce e Gabbana",
+      "imgUrl": "https://images.unsplash.com/photo-1521577352947-9bb58764b69a?auto=format&fit=crop&q=80&w=1972&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "colorName": "green",
+      "colorId": 2002,
+      "quantity": 3
+    },
+    {
+      "id": 14,
+      "name": "T-shirt regular",
+      "articleNumber": 134558,
+      "price": 67.99,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+      "brand": "Dolce e Gabbana",
+      "imgUrl": "https://images.unsplash.com/photo-1521577352947-9bb58764b69a?auto=format&fit=crop&q=80&w=1972&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "colorName": "red",
+      "colorId": 2001,
+      "quantity": 2
+    },
+
+    {
+      "id": 15,
+      "name": "T-shirt slim",
+      "articleNumber": 144558,
+      "price": 50.99,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+      "brand": "Nike",
+      "imgUrl": "https://images.unsplash.com/photo-1523585298601-d46ae038d7d3?auto=format&fit=crop&q=80&w=1964&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "colorName": "red",
+      "colorId": 2001,
+      "quantity": 2
+    },
+    {
+      "id": 16,
+      "name": "T-shirt slim",
+      "articleNumber": 144558,
+      "price": 50.99,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+      "brand": "Nike",
+      "imgUrl": "https://images.unsplash.com/photo-1523585298601-d46ae038d7d3?auto=format&fit=crop&q=80&w=1964&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "colorName": "blue",
+      "colorId": 2003,
+      "quantity": 4
+    },
+    {
+      "id": 16,
+      "name": "T-shirt slim",
+      "articleNumber": 144558,
+      "price": 50.99,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+      "brand": "Nike",
+      "imgUrl": "https://images.unsplash.com/photo-1523585298601-d46ae038d7d3?auto=format&fit=crop&q=80&w=1964&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "colorName": "pink",
+      "colorId": 2004,
+      "quantity": 4
+    }
+  ],
+  "user": {
+    "id": 700,
+    "name": "Mario Rossi",
+    "email": "mario.rossi@email.com",
+    "credit": 350,
+    "address": "Via Cristoforo Colombo, 27",
+    "zipCode": 35100,
+    "province": "PD",
+    "municipality": "Monselice",
+    "state": "Italia",
+    "prefix": "+39",
+    "telephone": 12345678
+  },
+  "colors": [
+    {
+      "colorId": 2001,
+      "colorName": "red"
+    },
+    {
+      "colorId": 2002,
+      "colorName": "green"
+    },
+    {
+      "colorId": 2003,
+      "colorName": "blue"
+    },
+    {
+      "colorId": 2004,
+      "colorName": "pink"
+    }
+  ],
+  "brand": ["Dolce e Gabbana", "LiuJo", "Armani", "Nike"]
+}

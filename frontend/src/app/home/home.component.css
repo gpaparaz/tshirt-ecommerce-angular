@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+.card {
+  width: 320px;
+  margin: 20px;
+}
+
+.filterSelect {
+  width: 200px;
+}
+
+@media (min-width: 992px){
+  .contentProducts {
+  border-left: 1px solid gainsboro;
+  }
+}
+
+.hero {
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.686), rgba(0, 0, 0, 0.138)), url('https://images.unsplash.com/photo-1503341733017-1901578f9f1e?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 40vh;
+  color: chocolate;
+}
+
+.hero h1 {
+  font-size: 4em;
+  font-family: 'Permanent Marker', cursive;
+  text-shadow: 1px 1px 2px rgb(71, 42, 5);
+}
+
+.hero h3 {
+  font-size: 2.5em;
+  text-shadow: 1px 1px 2px rgb(71, 42, 5);
+}
+
+.pumpkin {
+  width: 5em;
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 3.5em;
+    font-family: 'Permanent Marker', cursive;
+  }
+
+  .hero h3 {
+    font-size: 1.7em;
+    font-style: italic;
+  }
+}

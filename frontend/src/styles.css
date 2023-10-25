@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&display=swap');
+
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+
+#flex-container {
+   min-height:100%;
+   position:relative;
+}
+
+main {
+  padding-bottom: 360px;
+}
+
+footer {
+  width: 100%;
+  position:absolute;
+  bottom:0;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #F8F9FA;
+  color: #212121;
+}
+
+h1,h2,h3 {
+  font-family: 'Kanit', sans-serif;
+}
+
+.toast {
+  z-index: 100;
+  display: block;
+  position: fixed;
+  float: right;
+  right: 20px;
+  top: 80px;
+}
+
+.hidden {
+  display: none;
+}
+
+.cliccable {
+  cursor: pointer;
+}
+
+.card {
+  border: none;
+  background-color: white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.bg-success  {
+  color:white;
+}
+
+.selectedColor {
+  border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25);
+}
+
+.buttonColor {
+  padding: 10px 20px;
+  margin-top: 5px;
+  height: 30px;
+  width: 30px;
+  border-radius: 5px;
+}
+
+/* Hide arrows in "number" type input fields */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide arrows in "number" input fields in Firefox*/
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.quantityButton {
+  width: 38px;
+}

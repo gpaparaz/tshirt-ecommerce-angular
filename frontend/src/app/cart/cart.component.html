@@ -1,0 +1,467 @@
+<ngb-toast
+  *ngIf="showWarningWallet"
+  [autohide]="true"
+  (hidden)="showWarningWallet = false"
+  header="Attenzione"
+  aria-atomic="true"
+  class="toast text-bg-warning"
+>
+  Attenzione credito insufficiente
+</ngb-toast>
+
+<ngb-toast
+  *ngIf="showProductUnavailableWarning"
+  [autohide]="true"
+  (hidden)="showProductUnavailableWarning = false"
+  header="Attenzione"
+  aria-atomic="true"
+  class="toast text-bg-warning"
+>
+  Attenzione uno o più prodotti non sono più disponibili:
+  <ul>
+    <li *ngFor="let product of unavailableProducts">
+      {{ product.name }} in colore {{ translateColor(product.colorId) }}
+    </li>
+  </ul>
+</ngb-toast>
+
+<div [class.hidden]="!isPreOrderVisible">
+  <div
+    *ngIf="cart!.products.length === 0; else showCartContent"
+    class="container-sm mt-4"
+  >
+    <h2>Carrello vuoto</h2>
+  </div>
+
+  <ng-template #showCartContent>
+    <div class="container-sm my-4">
+      <h1>Carrello</h1>
+      <p>{{ sumNumberArticles() }} articoli</p>
+      <div class="row d-flex text-center">
+        <div
+          *ngFor="let product of cart!.products"
+          class="d-flex justify-content-center"
+        >
+          <div class="card mb-3" style="width: 60%">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <div
+                  routerLink="/product/{{ product.id }}"
+                  class="img-fluid rounded-start cliccable"
+                  [ngStyle]="{
+                  'height': '200px', 'widht': '180px',
+                    'background-image': 'url('+ product.imgUrl + ')',
+                    'backgroundPosition': 'center',
+                    'backgroundRepeat': 'no-repeat',
+                    'backgroundSize': 'cover',}"
+                ></div>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body d-flex flex-column align-items-start">
+                  <h5 class="card-title">{{ product.name }}</h5>
+                  <p class="text-body-secondary">
+                    Colore: {{ translateColor(product.colorId) }}
+                  </p>
+
+                  <div class="d-inline-flex align-items-center my-2">
+                    <button
+                      (click)="decrementQuantity(product)"
+                      class="btn btn-outline-primary quantityButton"
+                    >
+                      -
+                    </button>
+                    <input
+                      [(ngModel)]="product.quantity"
+                      type="number"
+                      class="form-control productQuantityInCart"
+                    />
+                    <button
+                      (click)="incrementQuantity(product)"
+                      class="btn btn-outline-primary quantityButton"
+                    >
+                      +
+                    </button>
+
+                    <p class="text-end fw-semibold fs-4 mx-5 mt-3">
+                      {{
+                        product.quantity * product.price
+                          | currency : "EUR" : "symbol" : "1.2-2"
+                      }}
+                    </p>
+
+                    <button
+                      class="btn btn-light"
+                      (click)="removeProductFromCart(product)"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-x-lg"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-end d-flex justify-content-between mt-3">
+        <p>Consegna prevista per giorno {{ formattedDate }}</p>
+        <div class="flex-column">
+          <p>
+            Spedizione
+            {{ shippingFees | currency : "EUR" : "symbol" : "1.2-2" }}
+          </p>
+          <p class="fw-bold fs-3">
+            TOTALE (IVA inclusa):
+            {{ cart!.totalPrice | currency : "EUR" : "symbol" : "1.2-2" }}
+          </p>
+
+          <div class="">
+            <button
+              class="btn btn-primary"
+              [class.disabled]="cart!.totalPrice === 0"
+              (click)="proceedWithThePurchase()"
+            >
+              Procedi nell'acquisto
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
+
+<div [class.hidden]="!isUserFormVisible" class="container my-4">
+  <button class="btn btn-outline-secondary mb-3" (click)="backToPreOrder()">
+    Indietro
+  </button>
+  <div class="d-flex justify-content-between">
+    <div class="col-6">
+      <form [formGroup]="userForm" (ngSubmit)="completePurchase()">
+        <h3>Dati anagrafici</h3>
+        <div class="row">
+          <div class="mb-3">
+            <label for="name" class="form-label">Nome e Cognome</label>
+            <input
+              class="form-control"
+              type="text"
+              id="name"
+              formControlName="name"
+              required
+              [ngClass]="{
+                'is-invalid':
+                  userForm.get('name')!.invalid && userForm.get('name')!.touched
+              }"
+            />
+            <div
+              class="invalid-feedback"
+              *ngIf="
+                userForm.get('name')!.invalid && userForm.get('name')!.touched
+              "
+            >
+              Nome obbligatorio.
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="text"
+            class="form-control"
+            id="email"
+            formControlName="email"
+            required
+            [ngClass]="{
+              'is-invalid':
+                userForm.get('email')!.invalid && userForm.get('email')!.touched
+            }"
+          />
+          <div
+            class="invalid-feedback"
+            *ngIf="
+              userForm.get('email')!.invalid && userForm.get('email')!.touched
+            "
+          >
+            Email obbligatorio.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="address" class="form-label">Via</label>
+          <input
+            type="text"
+            class="form-control"
+            id="address"
+            formControlName="address"
+            required
+            [ngClass]="{
+              'is-invalid':
+                userForm.get('address')!.invalid &&
+                userForm.get('address')!.touched
+            }"
+          />
+          <div
+            class="invalid-feedback"
+            *ngIf="
+              userForm.get('address')!.invalid &&
+              userForm.get('address')!.touched
+            "
+          >
+            Via obbligatorio.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <div class="mb-3">
+            <label for="municipality" class="form-label">Comune</label>
+            <input
+              type="text"
+              class="form-control"
+              id="municipality"
+              formControlName="municipality"
+              required
+              [ngClass]="{
+                'is-invalid':
+                  userForm.get('municipality')!.invalid &&
+                  userForm.get('municipality')!.touched
+              }"
+            />
+            <div
+              class="invalid-feedback"
+              *ngIf="
+                userForm.get('municipality')!.invalid &&
+                userForm.get('municipality')!.touched
+              "
+            >
+              Comune obbligatorio.
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <div class="mb-3">
+              <label for="province" class="form-label">Provincia</label>
+              <input
+                type="text"
+                class="form-control"
+                id="province"
+                formControlName="province"
+                required
+                [ngClass]="{
+                  'is-invalid':
+                    userForm.get('province')!.invalid &&
+                    userForm.get('province')!.touched
+                }"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="
+                  userForm.get('province')!.invalid &&
+                  userForm.get('province')!.touched
+                "
+              >
+                Provincia obbligatorio.
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="mb-3">
+              <label for="zipCode" class="form-label">Cap</label>
+              <input
+                type="number"
+                class="form-control"
+                id="zipCode"
+                formControlName="zipCode"
+                required
+                [ngClass]="{
+                  'is-invalid':
+                    userForm.get('zipCode')!.invalid &&
+                    userForm.get('zipCode')!.touched
+                }"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="
+                  userForm.get('zipCode')!.invalid &&
+                  userForm.get('zipCode')!.touched
+                "
+              >
+                CAP obbligatorio.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="mb-3">
+              <label for="state" class="form-label">Stato</label>
+              <input
+                type="text"
+                class="form-control"
+                id="state"
+                formControlName="state"
+                required
+                [ngClass]="{
+                  'is-invalid':
+                    userForm.get('state')!.invalid &&
+                    userForm.get('state')!.touched
+                }"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="
+                  userForm.get('state')!.invalid &&
+                  userForm.get('state')!.touched
+                "
+              >
+                Provincia obbligatorio.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3">
+            <div class="mb-3">
+              <label for="prefix" class="form-label">Prefisso</label>
+              <input
+                type="text"
+                class="form-control"
+                id="prefix"
+                formControlName="prefix"
+                required
+                [ngClass]="{
+                  'is-invalid':
+                    userForm.get('prefix')!.invalid &&
+                    userForm.get('prefix')!.touched
+                }"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="
+                  userForm.get('prefix')!.invalid &&
+                  userForm.get('prefix')!.touched
+                "
+              >
+                Prefisso obbligatorio.
+              </div>
+            </div>
+          </div>
+          <div class="col-md-9">
+            <div class="mb-3">
+              <label for="telephone" class="form-label">Telefono</label>
+              <input
+                type="number"
+                class="form-control"
+                id="telephone"
+                formControlName="telephone"
+                required
+                [ngClass]="{
+                  'is-invalid':
+                    userForm.get('telephone')!.invalid &&
+                    userForm.get('telephone')!.touched
+                }"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="
+                  userForm.get('telephone')!.invalid &&
+                  userForm.get('telephone')!.touched
+                "
+              >
+                Telefono obbligatorio.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          [disabled]="userForm.invalid"
+          class="btn btn-primary"
+        >
+          Completa l'acquisto
+        </button>
+      </form>
+    </div>
+
+    <div class="col-4">
+      <div class="card p-5 cartCard">
+        <div class="d-flex flex-column align-items-start">
+          <div
+            *ngFor="let product of cart!.products"
+            class="d-flex justify-content-center"
+          >
+            <p>
+              {{ product.name }} x {{ product.quantity }} x
+              {{ translateColor(product.colorId) }}
+            </p>
+          </div>
+          <p>
+            Spedizione
+            {{ shippingFees | currency : "EUR" : "symbol" : "1.2-2" }}
+          </p>
+          <p class="fw-bold">
+            Totale (IVA inclusa):
+            {{ cart!.totalPrice | currency : "EUR" : "symbol" : "1.2-2" }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div [class.hidden]="!isSummaryOrderVisible" class="container-sm mt-4">
+  <h2>Ordine completato!</h2>
+  <h3>Riepilogo ordine</h3>
+  <h5 class="mb-2">Ordine numero: {{ copyOfCart!.orderCode }}</h5>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Codice articolo</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Quantità</th>
+        <th scope="col">Prezzo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of copyOfCart!.products; let i = index">
+        <th scope="row">{{ product.articleNumber }}</th>
+        <td>{{ product.name }}</td>
+        <td>{{ product.quantity }}</td>
+        <td>{{ product.price | currency : "EUR" : "symbol" : "1.2-2" }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="text-end fw-bold fs-3">
+    <p>
+      TOTALE: {{ copyOfCart!.totalPrice | currency : "EUR" : "symbol" : "1.2-2" }}
+    </p>
+  </div>
+
+  <h3>Indirizzo di spedizione</h3>
+  <div>
+    <p>{{ userForm.get("name")!.value }}</p>
+    <p>{{ userForm.get("address")!.value }}</p>
+    <p>{{ userForm.get("zipCode")!.value }}</p>
+    <p>
+      {{ userForm.get("municipality")!.value }},
+      {{ userForm.get("province")!.value }}
+    </p>
+    <p>
+      {{ userForm.get("prefix")!.value }} {{ userForm.get("telephone")!.value }}
+    </p>
+    <p>{{ userForm.get("email")!.value }}</p>
+  </div>
+</div>

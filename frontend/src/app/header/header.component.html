@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-md navbar-light bg-faded">
+  <div class="container-fluid mx-3">
+  <button class="navbar-toggler navbar-toggler-right mx-4" type="button" (click)="navbarCollapsed = !navbarCollapsed" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" routerLink="/">
+    <img class="logo mx-3" src="assets/logo-tshirt-ecommerce.png"/>
+  </a>
+  <div [ngbCollapse]="navbarCollapsed" class="navbar-collapse" id="navbarSupportedContent">
+    <div class="container-fluid">
+
+      <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/">
+              Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/cart">
+              Carrello
+            </a>
+          </li>
+        </ul>
+
+        <div class="d-inline-flex">
+          <span class="fw-semibold mt-2">
+            <div *ngIf="user">
+              Saldo: {{ user.credit | currency:'EUR':'symbol':'1.2-2' }}
+            </div>
+          </span>
+
+          <div ngbDropdown class="mx-3" *ngIf="user">
+            <button type="button" class="userHeaderButton" id="dropdownBasic1" ngbDropdownToggle>
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="azure" class="bi bi-person-fill" viewBox="0 0 16 16">
+                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+              </svg>
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-menu dropdown-menu-end userTooltip">
+              <div class="d-flex flex-column">
+
+                <span>Hello {{user!.name}}</span>
+                <span>{{user!.email}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+</nav>

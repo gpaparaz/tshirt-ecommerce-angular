@@ -1,0 +1,155 @@
+<div class="hero">
+  <div class="container-sm">
+    <img class="pumpkin mt-3" src="assets/zucca.png" />
+    <h1 class="pt-3">Happy Halloweeen</h1>
+    <h3>1000 nuovi prodotti disponibili!</h3>
+  </div>
+</div>
+
+<div class="container-fluid">
+    <ngb-toast
+      *ngIf="showToast"
+      [autohide]="true"
+      (hidden)="showToast = false"
+      header="Eseguito"
+      aria-atomic="true"
+      class="toast bg-success"
+    >
+      Prodotto aggiunto nel carrello
+    </ngb-toast>
+
+    <ngb-toast
+      *ngIf="showAlertColor"
+      [autohide]="true"
+      (hidden)="showAlertColor = false"
+      header="Attenzione"
+      (hidden)="showAlertColor = false"
+      aria-atomic="true"
+      class="toast text-bg-danger"
+    >
+      Seleziona un colore
+    </ngb-toast>
+
+    <ngb-toast
+      *ngIf="showWarningWallet"
+      [autohide]="true"
+      (hidden)="showWarningWallet = false"
+      header="Attenzione"
+      aria-atomic="true"
+      class="toast text-bg-warning"
+    >
+      Attenzione credito insufficiente
+    </ngb-toast>
+
+    <div class="row ">
+      <form class="col-12 col-md-2 p-3 mx-2" #form="ngForm">
+        <!-- filters -->
+        <button class="btn btn-outline-secondary mb-4" (click)="resetFilters()">
+          Reset filtri
+        </button>
+
+        <!--availability button -->
+        <div class="row d-flex flex-column">
+          <select
+            id="availability"
+            name="availability"
+            [(ngModel)]="query.availability"
+            (ngModelChange)="filterProducts()"
+            class="form-select mb-3 filterSelect mx-2"
+          >
+            <option value="" selected>Disponibilità</option>
+            <option value="true">Disponibile</option>
+            <option value="false">Non disponibile</option>
+          </select>
+
+          <select
+            id="availability"
+            name="availability"
+            [(ngModel)]="query.brand"
+            (ngModelChange)="filterProducts()"
+            class="form-select mb-3 filterSelect mx-2"
+          >
+            <option value="" selected>Seleziona brand</option>
+            <option *ngFor="let brand of brands" [ngValue]="brand">
+              {{ brand }}
+            </option>
+          </select>
+
+          <div class="d-flex flex-wrap">
+            <button
+              class="btn mx-2 buttonColor"
+              *ngFor="let color of colorFilters"
+              [ngStyle]="{
+                'background-color': color.colorName
+              }"
+              (click)="setColorFilter(color.colorId)"
+            ></button>
+          </div>
+        </div>
+      </form>
+
+      <div class="col-12 col-md-9 m-3">
+        <p>{{ products!.length }} articoli</p>
+
+        <div class="contentProducts d-flex flex-wrap">
+          <!-- product card -->
+
+          <div class="card" *ngFor="let product of products">
+            <div
+              class="card-img-top"
+              [ngStyle]="{
+              'height': '300px', 'widht': '340px',
+                'background-image': 'url('+ product.imgUrl + ')',
+                'backgroundPosition': 'center',
+                'backgroundRepeat': 'no-repeat',
+                'backgroundSize': 'cover',
+            }"
+            ></div>
+
+            <div class="card-body d-flex flex-column justify-content-between">
+              <div>
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text fs-6">{{ product.brand }}</p>
+                <p class="fw-semibold fs-5">
+                  {{ product.price | currency : "EUR" : "symbol" : "1.2-2" }}
+                </p>
+              </div>
+              <div class="d-flex flex-column">
+                <div class="d-flex flex-row my-3">
+                  <button
+                    *ngFor="let item of product.colors"
+                    class="btn mx-1 buttonColor"
+                    (click)="setColor(product, item.colorId)"
+                    [disabled]="isColorDisabled(product, item.colorId)"
+                    [ngStyle]="{
+                      'background-color': item.colorName
+                    }"
+                  ></button>
+                </div>
+                <div class="d-flex flex-row">
+                  <button
+                    class="btn btn-primary"
+                    (click)="addProductInCart(product)"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-cart"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+                      />
+                    </svg>
+                  </button>
+                  <a routerLink="/product/{{ product.id }}" class="btn btn-primary mx-3">Dettagli </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
