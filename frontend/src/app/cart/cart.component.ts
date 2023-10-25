@@ -81,6 +81,8 @@ export class CartComponent implements OnInit {
         return 'Green';
       case Color.Blue:
         return 'Blue';
+      case Color.Pink:
+        return 'Pink';
 
       default:
         return 'Sconosciuto';

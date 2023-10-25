@@ -5,5 +5,6 @@ export const shippingFees = 7.99
 export enum Color {
   Red = 2001,
   Green = 2002,
-  Blue = 2003
+  Blue = 2003,
+  Pink = 2004
 }
